@@ -257,7 +257,7 @@ func saveLocationsToFile(locations []*Locations) {
 
 func getResultsAndPrint() {
 	results := make([]*Result, 0)
-	jsonFile, err := os.Open("/Users/vthallam/Documents/code/scraping/HN Comments/results.json")
+	jsonFile, err := os.Open("./results.json")
 	// if we os.Open returns an error then handle it
 	if err != nil {
 		fmt.Println(err)
@@ -683,7 +683,7 @@ func returnOneIfFound(pattern string, text string) int {
 
 func getComments(fileName string) []*comment {
 	// Open our jsonFile
-	jsonFile, err := os.Open("/Users/vthallam/Documents/code/scraping/HN Comments/" + fileName)
+	jsonFile, err := os.Open("./" + fileName)
 	// if we os.Open returns an error then handle it
 	if err != nil {
 		fmt.Println(err)
