@@ -222,35 +222,35 @@ type Result struct {
 
 // saveResultsToFile ..
 func saveJSStuffToFile(latLongMap map[string]*LatLong, mapData []*MapData) {
-	resultsBlob, _ := json.Marshal(latLongMap)
+	resultsBlob, _ := json.MarshalIndent(latLongMap, "", "\t")
 	err := ioutil.WriteFile("lat_long_map.json", resultsBlob, 0644)
 	checkErr(err)
 
-	titleBlob, _ := json.Marshal(mapData)
+	titleBlob, _ := json.MarshalIndent(mapData, "", "\t")
 	err = ioutil.WriteFile("map_data.json", titleBlob, 0644)
 	checkErr(err)
 }
 
 func saveSkillsToFile(skillsMap map[string]int) {
-	skillsJSON, _ := json.Marshal(skillsMap)
+	skillsJSON, _ := json.MarshalIndent(skillsMap, "", "\t")
 	err := ioutil.WriteFile("skills.json", skillsJSON, 0644)
 	checkErr(err)
 }
 
 // saveResultsToFile ..
 func saveResultsToFile(results []*Result, titleMap map[string]int) {
-	resultsBlob, _ := json.Marshal(results)
+	resultsBlob, _ := json.MarshalIndent(results, "", "\t")
 	err := ioutil.WriteFile("results.json", resultsBlob, 0644)
 	checkErr(err)
 
-	titleBlob, _ := json.Marshal(titleMap)
+	titleBlob, _ := json.MarshalIndent(titleMap, "", "\t")
 	err = ioutil.WriteFile("title_results.json", titleBlob, 0644)
 	checkErr(err)
 }
 
 // saveResultsToFile ..
 func saveLocationsToFile(locations []*Locations) {
-	resultsBlob, _ := json.Marshal(locations)
+	resultsBlob, _ := json.MarshalIndent(locations, "", "\t")
 	err := ioutil.WriteFile("locations.json", resultsBlob, 0644)
 	checkErr(err)
 }
@@ -436,8 +436,8 @@ func getLocations() {
 		mapdata = append(mapdata, md)
 	}
 
-	latlongJSON, _ := json.Marshal(locLatLongMap)
-	mapDataJSON, _ := json.Marshal(mapdata)
+	latlongJSON, _ := json.MarshalIndent(locLatLongMap, "", "\t")
+	mapDataJSON, _ := json.MarshalIndent(mapdata, "", "\t")
 
 	fmt.Println(latlongJSON)
 	fmt.Println(mapDataJSON)
@@ -568,7 +568,7 @@ func scrapeAllMonthsComments() {
 }
 
 func writeCommentsToFile(fileName string, comments []*comment) {
-	commentsJSON, _ := json.Marshal(comments)
+	commentsJSON, _ := json.MarshalIndent(comments, "", "\t")
 	err := ioutil.WriteFile(fileName, commentsJSON, 0644)
 	if err != nil {
 		panic(err)
